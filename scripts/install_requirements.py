@@ -73,7 +73,7 @@ def _install_requirements_file(file_stem, fix_requirements):
         requirements_file = "{0}.{1}".format(file_stem, _REQUIREMENTS_EXTENSION)
 
     with _LogWrapper("Running pip on {0}".format(requirements_file)):
-        command_args = ["pip", "install", "-r", requirements_file]
+        command_args = ["pip", "install", "-vvv", "-r", requirements_file]
         subprocess.check_call(command_args)
 
     if fix_requirements:
