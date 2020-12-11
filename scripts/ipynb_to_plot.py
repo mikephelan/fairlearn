@@ -25,6 +25,18 @@ for folder, subFolders, files in os.walk(args.directory):
             # define the target filename using the conventions of fairlearn/autodoc
             tgt_fname = tgt_fname_prefix + tgt_fname_divider + tgt_fname_base + tgt_fname_ext
             src_nbook = jupytext.read(folder + os.sep + filename)
-            jupytext.write(src_nbook, tgt_fname, fmt=tgt_nbook_fmt)
-
+            tgt_nbook = jupytext.writes(src_nbook, fmt=tgt_nbook_fmt)
+            with open(os.path.join(folder, tgt_fname), 'w') as f:
+                newlines = []
+                newlines.append('"""\n')
+                newlines.append('===========================\n')
+                # break up the base filename into capitalized words and append them to the docstring
+                newlines.append('OpenDP ' + " ".join(re.split(tgt_fname_divider, tgt_fname_base.title())))
+                newlines.append('\n')
+                newlines.append('===========================\n')
+                newlines.append('"""\n')
+                newlines.append('\n')
+                for line in newlines:
+                    f.write(line)
+                f.write(tgt_nbook)
 
