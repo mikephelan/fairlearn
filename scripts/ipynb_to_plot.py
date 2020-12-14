@@ -1,3 +1,10 @@
+# Licensed under the MIT License.
+
+"""Convert Jupytext Markdown (.ipynb) notebooks to percent format (.py) notebooks, recursively by folder
+
+Usage: python3 ipynb_to_plot.py path-to-top-level-folder
+
+"""
 import argparse
 import jupytext
 import os
