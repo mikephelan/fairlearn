@@ -147,6 +147,7 @@ sphinx_gallery_conf = {
     'gallery_dirs': 'auto_examples',
     # pypandoc enables rst to md conversion in downloadable notebooks
     'pypandoc': True,
+    'ignore_pattern': 'utils.py'
 }
 
 html_sidebars = {
